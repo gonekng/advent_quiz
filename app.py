@@ -9,7 +9,7 @@ warnings.filterwarnings('ignore')
 
 def show_home():
     st.title("Advent Calender Quiz 🎅")
-    st.write('##### ㅡ 크리스마스를 기다리며 매일 오픈되는 퀴즈를 풀어보세요!')
+    st.write('##### ㅡ 크리스마스를 기다리며 매일 오픈되는 퀴즈를 풀어보세요!!')
     st.write('---')
 
     # 2024년 12월 달력 생성
@@ -20,7 +20,6 @@ def show_home():
     # 오늘 날짜 가져오기
     today = datetime.now()
     today_day = today.day if today.month == month and today.year == year else 0  # 현재 월과 연도에 따라 일수 확인
-    print(today_day)
 
     # 달력 그리기
     cols = st.columns(7)
