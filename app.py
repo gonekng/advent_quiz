@@ -61,8 +61,10 @@ def show_quiz(day):
                 if user_answer.strip() == answer:
                     st.success("정답입니다.")
                     st.info(description)
+                if user_answer.strip() == '':
+                    st.error('답을 입력해주세요.')
                 else:
-                    st.error(f"정답이 아닙니다.")
+                    st.error("정답이 아닙니다.")
         with col2:
             img_path = f'images/q{day}.jpg'
             try:
