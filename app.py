@@ -61,15 +61,13 @@ def show_quiz(day):
                 if user_answer.strip() == answer:
                     st.success("정답입니다.")
                     st.info(description)
-                if user_answer.strip() == '':
-                    st.error('답을 입력해주세요.')
                 else:
                     st.error("정답이 아닙니다.")
         with col2:
             img_path = f'images/q{day}.jpg'
             try:
                 img = Image.open(img_path)
-                st.image(img, use_container_width = True)
+                st.image(img)
             except FileNotFoundError:
                 st.write(f"{day}일 이미지 없음")
     elif day == 24:
