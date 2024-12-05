@@ -82,10 +82,10 @@ def main():
     if 'selected_day' not in st.session_state:
         st.session_state.selected_day = None
     
-    st.sidebar.title('Merry Christmas !')
+    st.sidebar.title('👋 Happy Merry Christmas!')
     if st.sidebar.button('**처음으로**', use_container_width = True):
         st.session_state.selected_day = None
-        st.rerun()   
+        st.rerun()
 
     day = st.session_state.selected_day
     if day == None:
