@@ -30,44 +30,52 @@ def show_home():
     for week in cal:
         cols = st.columns(7)
         for i, day in enumerate(week):
-            if day == 0:   
+            if day == 0:
                 cols[i].write("")  # 빈 칸
             else:
-                if day <= today_day:
-                    day_button = cols[i].button(f"{day}", key=day, type='primary', use_container_width = True)
-                else:
-                    day_button = cols[i].button(f"{day}", key=day, disabled = True, use_container_width = True)
-                # 버튼 클릭 시 퀴즈 페이지로 이동
-                if day_button:
-                    st.session_state.selected_day = day
-                    st.rerun()
+                if day < 25:                    
+                    if day <= today_day:
+                        day_button = cols[i].button(f"{day}", key=day, type='primary', use_container_width = True)
+                    else:
+                        day_button = cols[i].button(f"{day}", key=day, disabled = True, use_container_width = True)
+                    # 버튼 클릭 시 퀴즈 페이지로 이동
+                    if day_button:
+                        st.session_state.selected_day = day
+                        st.rerun()
+
     st.write('---')
 
 def show_quiz(day):
-    st.header(f"🎈 12월 {day}일 퀴즈")
-    st.write('---')
-    question = quizzes[day]["question"]
-    answer = quizzes[day]["answer"]
-    description = quizzes[day]["description"]
-    
-    col1, col2 = st.columns([8,2])
-    with col1:
-        st.write(f"#### Q. {question}")
-        st.write('※ 단답형 주관식이며, 모든 정답은 한글로 작성해주세요.(숫자는 가능)')
-        user_answer = st.text_input(label='answer', label_visibility='hidden')
-        if st.button("제출"):
-            if user_answer.strip() == answer:
-                st.success("정답입니다.")
-                st.info(description)
-            else:
-                st.error(f"정답이 아닙니다.")
-    with col2:
-        img_path = f'images/q{day}.jpg'
-        try:
-            img = Image.open(img_path)
-            st.image(img, use_container_width = True)
-        except FileNotFoundError:
-            st.write(f"{day}일 이미지 없음")
+    if day < 24:
+        st.header(f"🎈 12월 {day}일 퀴즈")
+        st.write('---')
+        question = quizzes[day]["question"]
+        answer = quizzes[day]["answer"]
+        description = quizzes[day]["description"]
+        
+        col1, col2 = st.columns([8,2])
+        with col1:
+            st.write(f"#### Q. {question}")
+            st.write('※ 단답형 주관식이며, 모든 정답은 한글로 작성해주세요.(숫자는 가능)')
+            user_answer = st.text_input(label='answer', label_visibility='hidden')
+            if st.button("제출"):
+                if user_answer.strip() == answer:
+                    st.success("정답입니다.")
+                    st.info(description)
+                else:
+                    st.error(f"정답이 아닙니다.")
+        with col2:
+            img_path = f'images/q{day}.jpg'
+            try:
+                img = Image.open(img_path)
+                st.image(img, use_container_width = True)
+            except FileNotFoundError:
+                st.write(f"{day}일 이미지 없음")
+    elif day == 25:
+        st.header('🎉 Finally, Today is Christmas Eve!')
+        st.write('---')
+    else:
+        st.write('---')
 
 def main():
     st.set_page_config(page_title="Advent Calender Quiz", layout="wide")
