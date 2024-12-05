@@ -3,6 +3,7 @@ from quizzes import quizzes
 import calendar
 from PIL import Image
 from datetime import datetime
+import pytz
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -18,7 +19,12 @@ def show_home():
     cal = calendar.monthcalendar(year, month)
 
     # 오늘 날짜 가져오기
-    today = datetime.now()
+    # 현재 UTC 시간 가져오기
+    utc_now = datetime.now(pytz.utc)
+
+    # 한국 시간으로 변환
+    korea_tz = pytz.timezone('Asia/Seoul')
+    today = utc_now.astimezone(korea_tz)
     today_day = today.day if today.month == month and today.year == year else 0  # 현재 월과 연도에 따라 일수 확인
 
     # 달력 그리기
