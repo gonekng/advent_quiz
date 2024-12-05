@@ -25,7 +25,7 @@ def show_home():
     cols = st.columns(7)
     for i in range(7):
         weekday = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][i]
-        cols[i].markdown(f'<div style="font-size: 20px; text-align: center; padding: 5px; background-color: darkgreen; color: white;">{weekday}</div>', unsafe_allow_html=True)   
+        cols[i].markdown(f'<div style="font-size: 18px; font-family: bold; text-align: center; padding: 5px; background-color: darkgreen; color: white;">{weekday}</div>', unsafe_allow_html=True)   
     st.write('')
     for week in cal:
         cols = st.columns(7)
