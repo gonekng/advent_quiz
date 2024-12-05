@@ -20,6 +20,7 @@ def show_home():
     # 오늘 날짜 가져오기
     today = datetime.now()
     today_day = today.day if today.month == month and today.year == year else 0  # 현재 월과 연도에 따라 일수 확인
+    print(today_day)
 
     # 달력 그리기
     cols = st.columns(7)
