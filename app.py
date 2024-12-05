@@ -35,14 +35,13 @@ def show_home():
             else:
                 if day < 25:                    
                     if day <= today_day:
-                        day_button = cols[i].button(f"{day}", key=day, type='primary', use_container_width = True)
+                        day_button = cols[i].button(f"**{day}**", key=day, type='primary', use_container_width = True)
                     else:
-                        day_button = cols[i].button(f"{day}", key=day, disabled = True, use_container_width = True)
+                        day_button = cols[i].button(f"**{day}**", key=day, disabled = True, use_container_width = True)
                     # 버튼 클릭 시 퀴즈 페이지로 이동
                     if day_button:
                         st.session_state.selected_day = day
                         st.rerun()
-
     st.write('---')
 
 def show_quiz(day):
@@ -71,7 +70,7 @@ def show_quiz(day):
                 st.image(img, use_container_width = True)
             except FileNotFoundError:
                 st.write(f"{day}일 이미지 없음")
-    elif day == 25:
+    elif day == 24:
         st.header('🎉 Finally, Today is Christmas Eve!')
         st.write('---')
     else:
