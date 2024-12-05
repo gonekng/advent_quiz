@@ -53,7 +53,7 @@ def show_quiz(day):
     col1, col2 = st.columns([8,2])
     with col1:
         st.subheader(question)
-        st.write('※ 단답형 주관식이며, 모든 정답은 한글로 작성해주세요.')
+        st.write('※ 단답형 주관식이며, 모든 정답은 한글로 작성해주세요.(숫자는 가능)')
         user_answer = st.text_input(label='answer', label_visibility='hidden')
         if st.button("제출"):
             if user_answer.strip() == answer:
