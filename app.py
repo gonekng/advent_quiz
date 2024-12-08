@@ -17,6 +17,7 @@ def show_home():
     year = 2024
     month = 12
     cal = calendar.monthcalendar(year, month)
+    st.write(cal)
 
     # 오늘 날짜 가져오기
     # 현재 UTC 시간 가져오기
