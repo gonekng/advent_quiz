@@ -16,8 +16,16 @@ def show_home():
     # 2024년 12월 달력 생성
     year = 2024
     month = 12
-    cal = calendar.monthcalendar(year, month)
-    st.write(cal)
+
+    # 예시 사용
+    year = 2024
+    month = 12
+    month_cal = calendar.monthcalendar(year, month)
+    # 일요일을 첫 번째 요소로 이동
+    sunday_cal = []
+    for week in month_cal:
+        # 일요일을 마지막으로 이동
+        sunday_cal.append([week[-1]] + week[:-1])
 
     # 오늘 날짜 가져오기
     # 현재 UTC 시간 가져오기
@@ -34,7 +42,7 @@ def show_home():
         weekday = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][i]
         cols[i].markdown(f'<div style="font-size: 17px; font-weight: bold; text-align: center; padding: 5px; background-color: seagreen; color: white;">{weekday}</div>', unsafe_allow_html=True)   
     st.write('')
-    for week in cal:
+    for week in sunday_cal:
         cols = st.columns(7)
         for i, day in enumerate(week):
             if day == 0:
