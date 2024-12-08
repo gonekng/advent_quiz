@@ -33,9 +33,9 @@ def show_home():
     # 달력 그리기
     cols = st.columns(7)
     for i in range(7):
-        weekday = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][i]
+        weekday = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][i]
         color = ['Red','Black','Black','Black','Black','Black','Blue'][i]
-        cols[i].markdown(f'<div style="font-size: 17px; font-weight: bold; text-align: center; padding: 5px; background-color: lightgreen; color: {color};">{weekday}</div>', unsafe_allow_html=True)   
+        cols[i].markdown(f'<div style="font-size: 17px; font-weight: bold; text-align: center; padding: 5px; background-color: Darkseagreen; color: {color};">{weekday}</div>', unsafe_allow_html=True)   
     st.write('')
     for week in cal:
         cols = st.columns(7)
