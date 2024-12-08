@@ -26,7 +26,6 @@ def show_home():
     korea_tz = pytz.timezone('Asia/Seoul')
     today = utc_now.astimezone(korea_tz)
     today_day = today.day if today.month == month and today.year == year else 0  # 현재 월과 연도에 따라 일수 확인
-    st.write(today)
 
     # 달력 그리기
     cols = st.columns(7)
