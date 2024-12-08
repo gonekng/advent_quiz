@@ -35,7 +35,7 @@ def show_home():
     for i in range(7):
         weekday = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][i]
         color = ['Red','Black','Black','Black','Black','Black','Blue'][i]
-        cols[i].markdown(f'<div style="font-size: 17px; font-weight: bold; background-color: rgba(46, 139, 87, 0.5); text-align: center; padding: 5px; color: {color};">{weekday}</div>', unsafe_allow_html=True)   
+        cols[i].markdown(f'<div style="font-size: 17px; font-weight: bold; background-color: rgba(46, 139, 87, 0.7); text-align: center; padding: 5px; color: {color};">{weekday}</div>', unsafe_allow_html=True)   
     st.write('')
     for week in cal:
         cols = st.columns(7)
