@@ -82,6 +82,8 @@ def show_quiz(day):
     elif day == 24:
         st.header('🎉 Finally, Today is Christmas Eve!')
         st.write('---')
+        eve_image = 'merry-christmas.png'
+        st.image(eve_image, use_container_width=True)
     else:
         st.write('---')
 
