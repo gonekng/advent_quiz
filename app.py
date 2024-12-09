@@ -45,8 +45,6 @@ def show_home():
                 if day < 25:
                     if day <= today_day:
                         day_button = cols[i].button(f"**{day}**", key=day, type='primary', use_container_width = True)
-                    elif day == 24:
-                        day_button = cols[i].button(f"**{day}**", key=day, use_container_width = True)
                     else:
                         day_button = cols[i].button(f"**{day}**", key=day, disabled = True, use_container_width = True)
                     # 버튼 클릭 시 퀴즈 페이지로 이동
