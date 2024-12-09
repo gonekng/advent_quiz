@@ -88,7 +88,7 @@ def show_quiz(day):
         st.image(eve_image, use_container_width=True)
 
         go_link = '''
-                    <a href="https://colormytree.me/2024/01GN25CR9M6GWYBY8KS91N7HXQ" target="_blank">
+                    <a href="https://colormytree.me/2024/01GN25CR9M6GWYBY8KS91N7HXQ" target="_blank" style="width: 100%; text-decoration: none;">
                         <button style="font-size: 17px; font-weight: bold; padding: 5px; background-color: seagreen; color: white; border: none; border-radius: 5px; cursor: pointer;">
                             크리스마스 트리 구경하러 가기
                         </button>
