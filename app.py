@@ -34,7 +34,7 @@ def show_home():
     cols = st.columns(7)
     for i in range(7):
         weekday = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][i]
-        cols[i].markdown(f'<div style="font-size: 17px; font-weight: bold; background-color: seagreen; text-align: center; padding: 5px; color: white;">{weekday}</div>', unsafe_allow_html=True)   
+        cols[i].markdown(f'<div style="font-size: 17px; font-weight: bold; border-radius: 5px; background-color: seagreen; text-align: center; padding: 5px; color: white;">{weekday}</div>', unsafe_allow_html=True)   
     st.write('')
     for week in cal:
         cols = st.columns(7)
@@ -89,7 +89,7 @@ def show_quiz(day):
 
         go_link = '''
                     <a href="https://colormytree.me/2024/01GN25CR9M6GWYBY8KS91N7HXQ" target="_blank">
-                        <button style="padding: 10px; background-color: seagreen; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                        <button style="font-size: 17px; font-weight: bold; padding: 5px; background-color: seagreen; color: white; border: none; border-radius: 5px; cursor: pointer;">
                             크리스마스 트리 구경하러 가기
                         </button>
                     </a>
