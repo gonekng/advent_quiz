@@ -1,6 +1,8 @@
+import os, sys, time
+import numpy as np
+import pandas as pd
 import streamlit as st
 from quizzes import quizzes
-import calendar
 from PIL import Image
 from datetime import datetime
 import pytz
@@ -65,9 +67,9 @@ def show_quiz(day):
         with col1:
             st.write(f"#### Q. {question}")
             st.write('※ 단답형 주관식이며, 모든 정답은 한글로 작성해주세요.(숫자는 가능)')
-            user_answer = st.text_input(label='answer', label_visibility='hidden')
+            user_answer = st.text_input(label='answer', label_visibility='hidden').strip()
             if st.button("제출"):
-                if user_answer.strip() in answer:
+                if user_answer in answer:
                     st.success("정답입니다.")
                     st.info(description)
                 else:
