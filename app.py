@@ -2,6 +2,7 @@ import os, sys, time
 import numpy as np
 import pandas as pd
 import streamlit as st
+import sqlite3
 from quizzes import quizzes
 from PIL import Image
 from datetime import datetime
@@ -9,6 +10,105 @@ import pytz
 
 import warnings
 warnings.filterwarnings('ignore')
+
+def connect_db():
+    conn = None
+    try:
+        conn = sqlite3.connect('data.db')
+    except Exception as e:
+        st.write(e)
+    
+    return conn
+
+def create_table():
+    conn = connect_db()
+    create_query = """
+                   CREATE TABLE IF NOT EXISTS Members(
+                       id integer primary key autoincrement,
+                       name varchar(10) not null,
+                       iscorrect1 boolean default False not null,
+                       iscorrect2 boolean default False not null,
+                       iscorrect3 boolean default False not null,
+                       iscorrect4 boolean default False not null,
+                       iscorrect5 boolean default False not null,
+                       iscorrect6 boolean default False not null,
+                       iscorrect7 boolean default False not null,
+                       iscorrect8 boolean default False not null,
+                       iscorrect9 boolean default False not null,
+                       iscorrect10 boolean default False not null,
+                       iscorrect11 boolean default False not null,
+                       iscorrect12 boolean default False not null,
+                       iscorrect13 boolean default False not null,
+                       iscorrect14 boolean default False not null,
+                       iscorrect15 boolean default False not null,
+                       iscorrect16 boolean default False not null,
+                       iscorrect17 boolean default False not null,
+                       iscorrect18 boolean default False not null,
+                       iscorrect19 boolean default False not null,
+                       iscorrect20 boolean default False not null,
+                       iscorrect21 boolean default False not null,
+                       iscorrect22 boolean default False not null,
+                       iscorrect23 boolean default False not null
+                   );
+                   """
+    conn.execute(create_query)
+    conn.commit()
+    conn.close()
+
+def read_table():
+    conn = connect_db()
+    select_query = "SELECT * FROM Members;"
+    df = pd.read_sql_query(select_query, conn)
+    conn.close()
+
+    return df
+
+def insert_table(new_user):
+    conn = connect_db()
+    insert_query = "INSERT INTO Members (name) VALUES (?);"
+    conn.execute(insert_query, (new_user,))
+    conn.commit()
+    conn.close()
+
+def update_table(user, day):
+    conn = connect_db()
+    col_name = f'iscorrect{day}'
+    update_query = f"UPDATE Members SET {col_name} = ? WHERE name = ?;"
+    conn.execute(update_query, (True, user))
+    conn.commit()
+    conn.close()
+
+def delete_table(user):
+    conn = connect_db()
+    delete_query = f"DELETE FROM Members WHERE name = ?;"
+    conn.execute(delete_query, (user,))
+    conn.commit()
+    conn.close()
+
+def drop_table():
+    conn = connect_db()
+    drop_query = "DROP TABLE IF EXISTS Members;"
+    conn.execute(drop_query)
+    conn.commit()
+    conn.close()
+
+def login():
+    st.title("Advent Calender Quiz 🎅")
+    st.write('##### ㅡ 크리스마스를 기다리며 매일 오픈되는 퀴즈를 풀어보세요!')
+    st.write('---')
+
+    st.write('##### 🏷️ 이름을 입력하세요.')
+    name = st.text_input(label='이름', label_visibility='collapsed').strip()
+    if st.button('입력'):
+        if df['name'].isin([name]).any():
+            st.session_state.user_name = name
+            st.success(f'{name}님, 안녕하세요👋')
+        else:
+            st.session_state.user_name = name
+            insert_table(name)
+            st.success(f'{name}님, 첫 방문을 환영합니다!')
+        if st.button('퀴즈 풀러가기'):
+            st.rerun()
 
 def show_home():
     st.title("Advent Calender Quiz 🎅")
@@ -72,6 +172,7 @@ def show_quiz(day):
                 if user_answer in answer:
                     st.success("정답입니다.")
                     st.info(description)
+                    update_table(st.session_state.user_name, day)
                 else:
                     st.error("정답이 아닙니다.")
         with col2:
@@ -81,6 +182,7 @@ def show_quiz(day):
                 st.image(img)
             except FileNotFoundError:
                 st.write(f"{day}일 이미지 없음")
+
     elif day == 24:
         st.header('🎉 Finally, Today is Christmas Eve!')
         st.write('---')
@@ -100,20 +202,40 @@ def show_quiz(day):
 
 def main():
     st.set_page_config(page_icon='🎁', page_title="Advent Calender Quiz", layout="wide")
-    
+
     if 'selected_day' not in st.session_state:
         st.session_state.selected_day = None
+    if 'user_name' not in st.session_state:
+        st.session_state.user_name = None
     
-    st.sidebar.title('👋 Happy Merry Christmas!')
+    create_table()
+    global df
+    df = read_table()
+
+    user_name = st.session_state.user_name        
+    st.sidebar.title('🎉 Happy Merry Christmas!')
+    if user_name != None:
+        st.sidebar.write(f'### {user_name}님, 안녕하세요👋')
     if st.sidebar.button('**처음으로**', use_container_width = True):
         st.session_state.selected_day = None
         st.rerun()
+    # if st.sidebar.button('테이블 삭제', use_container_width=True):
+    #     drop_table()
+    #     st.rerun()
+    
+    user_info = df.loc[df['name'] == user_name].values.flatten().tolist()[2:]
+    for idx, val in enumerate(user_info):
+        if val:
+            st.sidebar.write(f'12/{idx+1} : ✅')
 
-    day = st.session_state.selected_day
-    if day == None:
-        show_home()
+    if user_name == None:
+        login()
     else:
-        show_quiz(day)
+        day = st.session_state.selected_day
+        if day == None:
+            show_home()
+        else:
+            show_quiz(day)
 
 if __name__ == "__main__":
     main()
