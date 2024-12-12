@@ -173,9 +173,6 @@ def show_quiz(day):
                     st.success("정답입니다.")
                     st.info(description)
                     update_table(st.session_state.user_name, day)
-                    if st.button('돌아가기'):
-                        st.session_state.selected_day = None
-                        st.rerun()
                 else:
                     st.error("정답이 아닙니다.")
         with col2:
