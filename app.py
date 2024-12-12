@@ -136,7 +136,7 @@ def show_home():
     cols = st.columns(7)
     for i in range(7):
         weekday = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][i]
-        cols[i].markdown(f'<div style="font-size: 17px; font-weight: bold; border-radius: 5px; background-color: seagreen; text-align: center; padding: 5px; color: white;">{weekday}</div>', unsafe_allow_html=True)   
+        cols[i].markdown(f'<div style="font-size: 18px; font-weight: bold; border-radius: 5px; background-color: seagreen; text-align: center; padding: 5px; color: white;">{weekday}</div>', unsafe_allow_html=True)   
     st.write('')
     for week in cal:
         cols = st.columns(7)
@@ -173,6 +173,9 @@ def show_quiz(day):
                     st.success("정답입니다.")
                     st.info(description)
                     update_table(st.session_state.user_name, day)
+                    if st.button('돌아가기'):
+                        st.session_state.selected_day = None
+                        st.rerun()
                 else:
                     st.error("정답이 아닙니다.")
         with col2:
@@ -216,7 +219,10 @@ def main():
     st.sidebar.title('🎉 Happy Merry Christmas!')
     if user_name != None:
         st.sidebar.write(f'### {user_name}님, 안녕하세요👋')
-    if st.sidebar.button('**처음으로**', use_container_width = True):
+        if st.sidebar.button('**로그아웃**', use_container_width=True):
+            st.session_state.user_name = None
+            st.rerun()
+    if st.sidebar.button('**메인화면**', type = 'primary', use_container_width = True):
         st.session_state.selected_day = None
         st.rerun()
     # if st.sidebar.button('테이블 삭제', use_container_width=True):
