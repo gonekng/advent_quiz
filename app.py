@@ -174,7 +174,7 @@ def show_quiz(day):
                     st.info(description)
                     update_table(st.session_state.user_name, day)
                 else:
-                    st.error("땡! 오답입니다.")
+                    st.error("땡! 오답입니다. 다시 풀어주세요.")
         with col2:
             img_path = f'images/q{day}.jpg'
             try:
