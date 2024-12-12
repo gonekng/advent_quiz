@@ -170,11 +170,11 @@ def show_quiz(day):
             user_answer = st.text_input(label='answer', label_visibility='hidden').strip()
             if st.button("제출"):
                 if user_answer in answer:
-                    st.success("정답입니다.")
+                    st.success("딩동댕! 정답입니다.")
                     st.info(description)
                     update_table(st.session_state.user_name, day)
                 else:
-                    st.error("정답이 아닙니다.")
+                    st.error("땡! 오답입니다.")
         with col2:
             img_path = f'images/q{day}.jpg'
             try:
