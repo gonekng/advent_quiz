@@ -115,6 +115,10 @@ def show_members():
         edit_data.to_sql('Members', conn, if_exists='replace', index=False)
         st.success("Changes saved to the database.")
 
+    delete_name = st.selectbox(df['name'])
+    if st.button('삭제하기'):
+        delete_table(delete_name)
+
 def show_home():
     st.title("Advent Calender Quiz 🎅")
     st.write('##### ㅡ 크리스마스를 기다리며 매일 오픈되는 퀴즈를 풀어보세요!')
