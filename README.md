@@ -8,3 +8,5 @@
 
 🎅 HAPPY MERRY CHRISTMAS !
 
+![첫화면](readme_images/1.png)
+![메인화면](readme_images/2.png)
