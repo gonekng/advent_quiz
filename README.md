@@ -8,5 +8,8 @@
 
 🎅 HAPPY MERRY CHRISTMAS !
 
-![첫화면](readme_images/1.png)
+> First Page
+![](readme_images/1.png)
+  
+> Calendar Page
 ![메인화면](readme_images/2.png)
