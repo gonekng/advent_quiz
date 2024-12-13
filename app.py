@@ -115,7 +115,10 @@ def show_members():
         edit_data.to_sql('Members', conn, if_exists='replace', index=False)
         st.success("Changes saved to the database.")
 
-    delete_name = st.selectbox(df['name'])
+    delete_name = st.selectbox(
+        "Select a user to delete",
+        df['name'].tolist()
+    )
     if st.button('삭제하기'):
         delete_table(delete_name)
 
