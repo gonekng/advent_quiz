@@ -110,6 +110,9 @@ def login():
         if st.button('퀴즈 풀러가기'):
             st.rerun()
 
+def show_members():
+    st.dataframe(df)
+
 def show_home():
     st.title("Advent Calender Quiz 🎅")
     st.write('##### ㅡ 크리스마스를 기다리며 매일 오픈되는 퀴즈를 풀어보세요!')
@@ -233,6 +236,8 @@ def main():
 
     if user_name == None:
         login()
+    elif user_name == '관리자':
+        show_members()
     else:
         day = st.session_state.selected_day
         if day == None:
