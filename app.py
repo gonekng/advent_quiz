@@ -111,7 +111,11 @@ def login():
             st.rerun()
 
 def show_members():
-    st.dataframe(df)
+    conn = connect_db()
+    edit_data = st.data_editor(df)
+    if st.button("Save Changes"):
+        edit_data.to_sql('Members', conn, if_exists='replace', index=False)
+        st.success("Changes saved to the database.")
 
 def show_home():
     st.title("Advent Calender Quiz 🎅")
