@@ -109,18 +109,34 @@ def login():
             st.rerun()
 
 def show_members():
+    st.title("Advent Calender Quiz 🎅")
+    st.write('##### ㅡ 크리스마스를 기다리며 매일 오픈되는 퀴즈를 풀어보세요!')
+    st.write('---')
+
     conn = connect_db()
     edit_data = st.data_editor(df)
     if st.button("Save Changes"):
         edit_data.to_sql('Members', conn, if_exists='replace', index=False)
         st.success("Changes saved to the database.")
+    
+    st.write('---')
 
+    user_list = df['name'].tolist()
+    user_list = user_list.insert(0, "Select a user to delete")
     delete_name = st.selectbox(
         "Select a user to delete",
-        df['name'].tolist()
+        user_list,
+        index = 0,
+        label_visibility='collapsed'
     )
-    if st.button('삭제하기'):
+    if delete_name == "Select a user to delete":
+        delete_btn = st.button('삭제하기', disabled=True)
+    else:
+        delete_btn = st.button('삭제하기', disabled=True)
+    if delete_btn:
         delete_table(delete_name)
+        st.success(f'{delete_name}님의 데이터가 삭제되었습니다.')
+        st.rerun()
 
 def show_home():
     st.title("Advent Calender Quiz 🎅")
