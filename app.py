@@ -64,12 +64,12 @@ def read_table():
 def insert_table(new_user):
     conn = connect_db()
     insert_query = """
-                   INSERT INTO Members (name, iscorrect1, iscorrect1, iscorrect1,
-                                        iscorrect1, iscorrect1, iscorrect1, iscorrect1, iscorrect1,
-                                        iscorrect1, iscorrect1, iscorrect1, iscorrect1, iscorrect1,
-                                        iscorrect1, iscorrect1, iscorrect1, iscorrect1, iscorrect1,
-                                        iscorrect1, iscorrect1, iscorrect1, iscorrect1, iscorrect1
-                                       ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+                   INSERT INTO Members (name, iscorrect1, iscorrect2, iscorrect3,
+                                        iscorrect4, iscorrect5, iscorrect6, iscorrect7, iscorrect8,
+                                        iscorrect9, iscorrect10, iscorrect11, iscorrect12, iscorrect13,
+                                        iscorrect14, iscorrect15, iscorrect16, iscorrect17, iscorrect18,
+                                        iscorrect19, iscorrect20, iscorrect21, iscorrect22, iscorrect23)
+                   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
                    """
     conn.execute(insert_query, (new_user, False, False, False, False, False, False, False, False, False, False,
                                 False, False, False, False, False, False, False, False, False, False, False, False, False))
