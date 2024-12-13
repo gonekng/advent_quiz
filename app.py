@@ -69,7 +69,7 @@ def insert_table(new_user):
                                         iscorrect9, iscorrect10, iscorrect11, iscorrect12, iscorrect13,
                                         iscorrect14, iscorrect15, iscorrect16, iscorrect17, iscorrect18,
                                         iscorrect19, iscorrect20, iscorrect21, iscorrect22, iscorrect23)
-                   VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+                   VALUES (?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
                    """
     conn.execute(insert_query, (len(df), new_user, False, False, False, False, False, False, False, False, False, False,
                                 False, False, False, False, False, False, False, False, False, False, False, False, False))
