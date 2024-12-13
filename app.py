@@ -109,8 +109,7 @@ def login():
             st.rerun()
 
 def show_members():
-    st.title("Advent Calender Quiz 🎅")
-    st.write('##### ㅡ 크리스마스를 기다리며 매일 오픈되는 퀴즈를 풀어보세요!')
+    st.header("Members")
     st.write('---')
 
     conn = connect_db()
