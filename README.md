@@ -6,10 +6,14 @@
 - library : `streamlit`, `pandas`
 - database : `sqlite3`
 
-🎅 HAPPY MERRY CHRISTMAS !
+🎅 **HAPPY MERRY CHRISTMAS !**
+
+---
 
 > First Page
+  
 ![](readme_images/1.png)
   
 > Calendar Page
+  
 ![메인화면](readme_images/2.png)
