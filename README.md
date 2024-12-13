@@ -7,13 +7,12 @@
 - database : `sqlite3`
 
 🎅 **HAPPY MERRY CHRISTMAS !**
+  
 
----
-
-> First Page
+> ***First Page***
   
 ![](readme_images/1.png)
   
-> Calendar Page
+> ***Calendar Page***
   
 ![메인화면](readme_images/2.png)
