@@ -115,7 +115,7 @@ def show_members():
     conn = connect_db()
     edit_data = st.data_editor(df, hide_index=True)
     if st.button("Save Changes"):
-        edit_data.sort_values(by='id')
+        edit_data.sort_values(by='id', inplace=True)
         edit_data.to_sql('Members', conn, if_exists='replace', index=False)
         st.success("Changes saved to the database.")
     
