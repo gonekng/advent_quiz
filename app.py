@@ -63,8 +63,16 @@ def read_table():
 
 def insert_table(new_user):
     conn = connect_db()
-    insert_query = "INSERT INTO Members (name) VALUES (?);"
-    conn.execute(insert_query, (new_user,))
+    insert_query = """
+                   INSERT INTO Members (name, iscorrect1, iscorrect1, iscorrect1,
+                                        iscorrect1, iscorrect1, iscorrect1, iscorrect1, iscorrect1,
+                                        iscorrect1, iscorrect1, iscorrect1, iscorrect1, iscorrect1,
+                                        iscorrect1, iscorrect1, iscorrect1, iscorrect1, iscorrect1,
+                                        iscorrect1, iscorrect1, iscorrect1, iscorrect1, iscorrect1,
+                                       ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+                   """
+    conn.execute(insert_query, (new_user, False, False, False, False, False, False, False, False, False, False,
+                                False, False, False, False, False, False, False, False, False, False, False, False, False))
     conn.commit()
     conn.close()
 
@@ -118,22 +126,11 @@ def show_members():
         edit_data.sort_values(by='id', inplace=True)
         edit_data.to_sql('Members', conn, if_exists='replace', index=False)
         st.success("Changes saved to the database.")
-    
     st.write('---')
 
     user_list = df['name'].tolist()
-    user_list = user_list.insert(0, "Select a user to delete")
-    delete_name = st.selectbox(
-        "Select a user to delete",
-        user_list,
-        index = 0,
-        label_visibility='collapsed'
-    )
-    if delete_name == "Select a user to delete":
-        delete_btn = st.button('삭제하기', disabled=True)
-    else:
-        delete_btn = st.button('삭제하기', disabled=True)
-    if delete_btn:
+    delete_name = st.selectbox("Select a user to delete", user_list)
+    if st.button('삭제하기'):
         delete_table(delete_name)
         st.success(f'{delete_name}님의 데이터가 삭제되었습니다.')
         st.rerun()
