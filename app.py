@@ -68,7 +68,7 @@ def insert_table(new_user):
                                         iscorrect1, iscorrect1, iscorrect1, iscorrect1, iscorrect1,
                                         iscorrect1, iscorrect1, iscorrect1, iscorrect1, iscorrect1,
                                         iscorrect1, iscorrect1, iscorrect1, iscorrect1, iscorrect1,
-                                        iscorrect1, iscorrect1, iscorrect1, iscorrect1, iscorrect1,
+                                        iscorrect1, iscorrect1, iscorrect1, iscorrect1, iscorrect1
                                        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
                    """
     conn.execute(insert_query, (new_user, False, False, False, False, False, False, False, False, False, False,
