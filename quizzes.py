@@ -68,4 +68,7 @@ quizzes = {
     23: {"question" : "크리스마스를 'X-mas'로 쓰기도 하는데, 이때 X는 '그리스도'를 뜻하는 이 언어의 첫 글자를 따온 것입니다. 이 언어는 무엇일까요?",
         "answer" : ["그리스어"],
         "description" : "'X-mas'의 X는 영어의 알파벳이 아니라 '그리스도'를 뜻하는 그리스어 '크리스토스(Christos, Χριστός)'에서 유래되었습니다.'"},
+    24: {"question" : "세계 최초의 문자메시지는 1992년 영국에서 서비스 개발자가 테스트를 위해 보낸 이 문장이라고 합니다. 이 문장은 무엇일까요?",
+        "answer" : ["Merry Christmas", "merry christmas", "MERRY CHRISTMAS"],
+        "description" : "세계 최초의 문자메시지는 'Merry Christmas'로, 지난 2021년 경매에서 1억 4천만원에 낙찰되었습니다."},
 }
