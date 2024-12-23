@@ -135,6 +135,11 @@ def show_members():
         delete_table(delete_name)
         st.success(f'{delete_name}님의 데이터가 삭제되었습니다.')
         st.rerun()
+    
+    if st.button('테이블 삭제'):
+        drop_table()
+        st.success('테이블이 삭제되었습니다.')
+        st.rerun()
 
 def show_home():
     st.title("Advent Calender Quiz 🎅")
