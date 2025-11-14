@@ -146,14 +146,13 @@ def show_home():
     st.write('##### ㅡ 크리스마스를 기다리며 매일 오픈되는 퀴즈를 풀어보세요!')
     st.write('---')
 
-    year = 2024
+    year = 2025
     month = 12
 
-    cal = [[1,2,3,4,5,6,7],
-           [8,9,10,11,12,13,14],
-           [15,16,17,18,19,20,21],
-           [22,23,24,25,26,27,28],
-           [29,30,31]]
+    cal = [[30,1,2,3,4,5,6],
+           [7,8,9,10,11,12,13],
+           [14,15,16,17,18,19,20],
+           [21,22,23,24,25]]
 
     # 오늘 날짜 가져오기
     # 현재 UTC 시간 가져오기
@@ -180,7 +179,7 @@ def show_home():
                     if day == 1 or (day <= today_day and st.session_state.answer_list[day-2] == True):
                         day_button = cols[i].button(f"**{day}**", key=day, type='primary', use_container_width = True)
                     else:
-                        day_button = cols[i].button(f"**{day}**", key=day, disabled = True, use_container_width = True)
+                        day_button = cols[i].button(f"**{day}**", key=day, disabled = False, use_container_width = True)
                     # 버튼 클릭 시 퀴즈 페이지로 이동
                     if day_button:
                         st.session_state.selected_day = day
