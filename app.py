@@ -142,48 +142,6 @@ def show_members():
         st.rerun()
 
 def show_home():
-    st.markdown("""
-    <style>
-    .calendar-grid {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr); /* 고정 7열 */
-        gap: 12px;
-        width: 100%;
-        max-width: 900px; /* 전체 최대 크기 */
-        margin: auto;
-    }
-
-    /* 요일 헤더 스타일 */
-    .day-header {
-        background: #2c8f51;
-        color: white;
-        padding: 10px 0;
-        text-align: center;
-        border-radius: 8px;
-        font-weight: 600;
-    }
-
-    /* 날짜 버튼 스타일 (Streamlit button 오버라이드)*/
-    .calendar-button > button {
-        width: 100% !important;
-        height: 55px !important;
-        border-radius: 10px;
-        font-size: 18px;
-    }
-
-    /* 모바일 화면에서도 7개 열 유지 */
-    @media (max-width: 768px) {
-        .calendar-grid {
-            grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-        }
-        .calendar-button > button {
-            font-size: 13px !important;
-            padding: 4px !important;
-        }
-    }
-    </style>
-    """, unsafe_allow_html=True)
     st.title("2025 Advent Calender Quiz🎅")
     st.write('##### ㅡ 크리스마스를 기다리며 매일 오픈되는 퀴즈를 풀어보세요!')
     st.write('---')
