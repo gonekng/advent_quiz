@@ -110,14 +110,16 @@ def login():
         if df['name'].isin([name]).any():
             st.session_state.user_name = name
             st.success(f'{name}님, 안녕하세요👋')
+            if st.button('퀴즈 풀러가기'):
+                st.rerun()
         elif name == "":
             st.error('이름을 1글자 이상 입력하세요.')
         else:
             st.session_state.user_name = name
             insert_table(name)
             st.success(f'{name}님, 첫 방문을 환영합니다!')
-        if st.button('퀴즈 풀러가기'):
-            st.rerun()
+            if st.button('퀴즈 풀러가기'):
+                st.rerun()
 
 def show_members():
     st.header("Members")
