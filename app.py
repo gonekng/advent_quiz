@@ -215,10 +215,21 @@ def show_quiz(day):
             st.image(img)
         except FileNotFoundError:
             st.write(f"{day}일 이미지 없음")
-        if st.button("< Prev"):
-            show_quiz(day-1)
-        if st.button("Next >"):
-            show_quiz(day+1)
+        if day <= 1:
+            is_disabled1 = True
+            is_disabled2 = False
+        elif day <= 24:
+            is_disabled1 = False
+            is_disabled2 = False
+        else:
+            is_disabled1 = False
+            is_disabled2 = True
+        if st.button("<< Prev <<", disabled=is_disabled1, use_container_width=True):
+            st.session_state.selected_day = day - 1
+            st.rerun()
+        if st.button(">> next >>", disabled=is_disabled2, use_container_width=True):
+            st.session_state.selected_day = day + 1
+            st.rerun()
     if day == 24 and user_answer in answer:
         st.write('---')
         st.warning(f'{st.session_state.user_name}님, 모든 퀴즈를 통과하셨습니다. 아래 버튼을 클릭해주세요.')
