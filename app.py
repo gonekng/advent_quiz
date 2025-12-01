@@ -110,6 +110,8 @@ def login():
         if df['name'].isin([name]).any():
             st.session_state.user_name = name
             st.success(f'{name}님, 안녕하세요👋')
+        elif name == "":
+            st.error('이름을 1글자 이상 입력하세요.')
         else:
             st.session_state.user_name = name
             insert_table(name)
