@@ -196,7 +196,7 @@ def show_quiz(day):
     col1, col2 = st.columns([8,2])
     with col1:
         st.write(f"#### Q. {question}")
-        if day == 24:
+        if day == 9:
             st.write('※ 단답형 주관식이며, 이 문제의 정답은 영어로 작성해주세요.')
         else:
             st.write('※ 단답형 주관식이며, 정답은 한글로 작성해주세요.(숫자는 가능)')
@@ -215,6 +215,10 @@ def show_quiz(day):
             st.image(img)
         except FileNotFoundError:
             st.write(f"{day}일 이미지 없음")
+        if st.button("< Prev"):
+            show_quiz(day-1)
+        if st.button("Next >"):
+            show_quiz(day+1)
     if day == 24 and user_answer in answer:
         st.write('---')
         st.warning(f'{st.session_state.user_name}님, 모든 퀴즈를 통과하셨습니다. 아래 버튼을 클릭해주세요.')
