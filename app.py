@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 import sqlite3
-from quizzes import quizzes
+from quizzes import quizzes2
 from PIL import Image
 from datetime import datetime
 import pytz
@@ -185,13 +185,13 @@ def show_home():
                         st.session_state.selected_day = day
                         st.rerun()
     st.write('---')
-
+ 
 def show_quiz(day):
     st.header(f"🎈 12월 {day}일 퀴즈")
     st.write('---')
-    question = quizzes[day]["question"]
-    answer = quizzes[day]["answer"]
-    description = quizzes[day]["description"]
+    question = quizzes2[day]["question"]
+    answer = quizzes2[day]["answer"]
+    description = quizzes2[day]["description"]
     
     col1, col2 = st.columns([8,2])
     with col1:
@@ -219,7 +219,7 @@ def show_quiz(day):
         st.write('---')
         st.warning(f'{st.session_state.user_name}님, 모든 퀴즈를 통과하셨습니다. 아래 버튼을 클릭해주세요.')
         go_link = '''
-                <a href="https://colormytree.me/2024/01GN25CR9M6GWYBY8KS91N7HXQ" target="_blank" style="width: 100%; text-decoration: none;">
+                <a href="https://colormytree.me/2025/01GN25CR9M6GWYBY8KS91N7HXQ" target="_blank" style="width: 100%; text-decoration: none;">
                     <button style="width: 100%; font-size: 17px; font-weight: bold; padding: 5px; background-color: seagreen; color: white; border: none; border-radius: 5px; cursor: pointer;">
                         크리스마스 트리 구경하러 가기
                     </button>
