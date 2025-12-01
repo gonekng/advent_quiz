@@ -263,7 +263,9 @@ def main():
     st.session_state.answer_list = answer_list
     for idx, val in enumerate(answer_list):
         if val:
-            st.sidebar.write(f'12월 {idx+1}일 : ✅')
+            st.sidebar.button(f'12/{idx+1}', type='primary', disabled=False)
+        else:
+            st.sidebar.button(f'12/{idx+1}', type='secondary', disabled=True)
 
     if user_name == None:
         login()
