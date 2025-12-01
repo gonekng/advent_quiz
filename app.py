@@ -228,7 +228,7 @@ def show_quiz(day):
         st.markdown(go_link, unsafe_allow_html=True)
 
 def main():
-    st.set_page_config(page_icon='🎁', page_title="Advent Calender Quiz", layout="wide")
+    st.set_page_config(page_icon='🎁', page_title="2025 Advent Calender Quiz", layout="wide")
 
     if 'selected_day' not in st.session_state:
         st.session_state.selected_day = None
