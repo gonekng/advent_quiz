@@ -142,7 +142,7 @@ def show_members():
         st.rerun()
 
 def show_home():
-    st.title("Advent Calender Quiz 🎅")
+    st.title("2025 Advent Calender Quiz🎅")
     st.write('##### ㅡ 크리스마스를 기다리며 매일 오픈되는 퀴즈를 풀어보세요!')
     st.write('---')
 
