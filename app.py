@@ -141,7 +141,49 @@ def show_members():
         st.success('테이블이 삭제되었습니다.')
         st.rerun()
 
-def show_home2():
+def show_home():
+    st.markdown("""
+    <style>
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr); /* 고정 7열 */
+        gap: 12px;
+        width: 100%;
+        max-width: 900px; /* 전체 최대 크기 */
+        margin: auto;
+    }
+
+    /* 요일 헤더 스타일 */
+    .day-header {
+        background: #2c8f51;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+
+    /* 날짜 버튼 스타일 (Streamlit button 오버라이드)*/
+    .calendar-button > button {
+        width: 100% !important;
+        height: 55px !important;
+        border-radius: 10px;
+        font-size: 18px;
+    }
+
+    /* 모바일 화면에서도 7개 열 유지 */
+    @media (max-width: 768px) {
+        .calendar-grid {
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .calendar-button > button {
+            font-size: 13px !important;
+            padding: 4px !important;
+        }
+    }
+    </style>
+    """, unsafe_allow_html=True)
     st.title("2025 Advent Calender Quiz🎅")
     st.write('##### ㅡ 크리스마스를 기다리며 매일 오픈되는 퀴즈를 풀어보세요!')
     st.write('---')
@@ -185,100 +227,6 @@ def show_home2():
                         st.session_state.selected_day = day
                         st.rerun()
     st.write('---')
-
-def show_home():
-    # --- 기존 Title 부분은 그대로 유지 ---
-
-    st.title("2025 Advent Calender Quiz🎅")
-    st.write('##### ㅡ 크리스마스를 기다리며 매일 오픈되는 퀴즈를 풀어보세요!')
-    st.write('---')
-
-    year = 2025
-    month = 12
-
-    cal = [
-        [30,1,2,3,4,5,6],
-        [7,8,9,10,11,12,13],
-        [14,15,16,17,18,19,20],
-        [21,22,23,24,25,0,0]
-    ]
-
-    # 오늘 날짜 가져오기
-    utc_now = datetime.now(pytz.utc)
-    korea_tz = pytz.timezone('Asia/Seoul')
-    today = utc_now.astimezone(korea_tz)
-    today_day = today.day if today.month == month and today.year == year else 0
-
-    # ---------- CSS GRID 적용 ----------
-    st.markdown("""
-    <style>
-    .calendar-grid {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr); /* 고정 7열 */
-        gap: 10px;
-        width: 100%;
-    }
-
-    .day-header {
-        background-color: seagreen;
-        padding: 8px 0;
-        text-align: center;
-        color: white;
-        font-weight: 600;
-        border-radius: 6px;
-    }
-
-    /* 버튼 감싸는 용도 */
-    .calendar-item > div {
-        width: 100% !important;
-    }
-
-    /* 모바일에서도 7열 유지 */
-    @media (max-width: 768px) {
-        .calendar-grid {
-            grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-        }
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-    # ---------- 요일 헤더 ----------
-    st.markdown('<div class="calendar-grid">', unsafe_allow_html=True)
-
-    weekdays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-    for wd in weekdays:
-        st.markdown(f'<div class="day-header">{wd}</div>', unsafe_allow_html=True)
-
-    # ---------- 날짜 버튼 출력 ----------
-    for week in cal:
-        for day in week:
-            st.markdown('<div class="calendar-item">', unsafe_allow_html=True)
-
-            if day == 0:
-                st.write("")
-            else:
-                if day <= 25:
-                    # 열림 조건
-                    unlocked = (day == 1) or (day <= today_day and st.session_state.answer_list[day-2] == True)
-
-                    btn = st.button(
-                        f"{day}",
-                        key=f"day_{day}",
-                        disabled=not unlocked,
-                        use_container_width=True
-                    )
-
-                    if btn:
-                        st.session_state.selected_day = day
-                        st.rerun()
-
-            st.markdown('</div>', unsafe_allow_html=True)
-
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    st.write('---')
-
 
 def show_quiz(day):
     st.header(f"🎈 12월 {day}일 퀴즈")
