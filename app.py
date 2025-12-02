@@ -168,8 +168,8 @@ def show_home():
     today_day = today.day if today.month == month and today.year == year else 0  # 현재 월과 연도에 따라 일수 확인
 
     # 달력 그리기
+    cols = st.columns(7)
     for week in cal:
-        cols = st.columns(7)
         for i in range(7):
             weekday = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][i]
             cols[i].markdown(f'<div style="font-size: 18px; font-weight: bold; border-radius: 5px; background-color: seagreen; text-align: center; padding: 5px; color: white;">{weekday}</div>', unsafe_allow_html=True)   
@@ -262,7 +262,7 @@ def main():
     st.session_state.answer_list = answer_list
     for idx, val in enumerate(answer_list):
         if val:
-            st.sidebar.write(f'12월 {idx+1}일 🍀')
+            st.sidebar.write(f'- 12월 {idx+1}일 🍀')
     if user_name == None:
         login()
     elif user_name == '관리자':
