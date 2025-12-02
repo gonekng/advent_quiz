@@ -246,9 +246,9 @@ def main():
     df = read_table()
 
     user_name = st.session_state.user_name        
-    st.sidebar.title('🎉 Happy Merry Christmas!')
+    st.sidebar.title('🎉 Merry Christmas!')
     if user_name != None:
-        st.sidebar.write(f'### {user_name}님, 안녕하세요👋')
+        st.sidebar.write(f'### | {user_name}님, 안녕하세요👋')
         if st.sidebar.button('**로그아웃**', use_container_width=True):
             st.session_state.user_name = None
             st.rerun()
@@ -261,8 +261,9 @@ def main():
     
     answer_list = df.loc[df['name'] == user_name].values.flatten().tolist()[2:]
     st.session_state.answer_list = answer_list
-    for idx, val in list(zip(range(len(answer_list)), answer_list)):
-        st.sidebar.write(f'12월 {idx+1}일 : {'⭕' if val == 1 else '❌'}')
+    percentage = answer_list.sum / 24
+    st.sidebar.write('#### 🧮 퀴즈 진행률')
+    st.sidebar.progress(percentage, text=f'> 총 24문제 중 {}개 성공')
     if user_name == None:
         login()
     elif user_name == '관리자':
