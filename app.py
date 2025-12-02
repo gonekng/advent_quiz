@@ -263,7 +263,7 @@ def main():
     st.session_state.answer_list = answer_list
     percentage = answer_list.sum / 24
     st.sidebar.write('#### 🧮 퀴즈 진행률')
-    st.sidebar.progress(percentage, text=f'> 총 24문제 중 {}개 성공')
+    st.sidebar.progress(percentage, text=f'> 총 24문제 중 {answer_list.sum}개 성공')
     if user_name == None:
         login()
     elif user_name == '관리자':
