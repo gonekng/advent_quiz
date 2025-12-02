@@ -261,11 +261,7 @@ def main():
     
     answer_list = df.loc[df['name'] == user_name].values.flatten().tolist()[2:]
     st.session_state.answer_list = answer_list
-    for idx, val in enumerate(answer_list):
-        if val:
-            st.sidebar.button(f'12/{idx+1} ⭕', disabled=False)
-        else:
-            st.sidebar.button(f'12/{idx+1} ❌', disabled=True)
+    st.sidebar.selectbox('select day', st.session_state.answer_list, label_visibility='hidden')
 
     if user_name == None:
         login()
