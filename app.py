@@ -261,7 +261,7 @@ def main():
     
     answer_list = df.loc[df['name'] == user_name].values.flatten().tolist()[2:]
     st.session_state.answer_list = answer_list
-    for idx, val in zip(answer_list.index, answer_list):
+    for idx, val in list(zip(range(len(answer_list)), answer_list)):
         st.sidebar.write(idx, val)
     if user_name == None:
         login()
