@@ -261,7 +261,11 @@ def main():
     
     answer_list = df.loc[df['name'] == user_name].values.flatten().tolist()[2:]
     st.session_state.answer_list = answer_list
-    st.sidebar.selectbox('select day', st.session_state.answer_list, label_visibility='hidden')
+    select_days = []
+    for idx, val in enumerate(answer_list):
+        if val:
+            select_days.append(f'12/{idx+1}')
+    st.sidebar.selectbox('Select Day', select_days, index=None, placeholder='Select Day', label_visibility='hidden')
 
     if user_name == None:
         login()
