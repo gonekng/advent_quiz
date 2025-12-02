@@ -261,9 +261,12 @@ def main():
     
     answer_list = df.loc[df['name'] == user_name].values.flatten().tolist()[2:]
     st.session_state.answer_list = answer_list
-    for idx, val in enumerate(answer_list):
-        if val:
-            st.sidebar.write(f'> 12월 {idx+1}일 : ✅')
+    display_table = pd.DataFrame({answer_list[:5],
+                                  answer_list[5:10],
+                                  answer_list[10:15],
+                                  answer_list[15:20],
+                                  answer_list[20:]})
+    st.sidebar.table(display_table)
     if user_name == None:
         login()
     elif user_name == '관리자':
