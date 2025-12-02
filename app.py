@@ -264,8 +264,8 @@ def main():
     select_days = []
     for idx, val in enumerate(answer_list):
         if val:
-            select_days.append(f'12/{idx+1}')
-    st.sidebar.selectbox('Select Day', select_days, index=None, placeholder='Select Day', label_visibility='hidden')
+            select_days.append(f'12월 {idx+1}일')
+    st.sidebar.selectbox('Select Day', select_days, index=None, placeholder='Select Day', label_visibility='collapsed')
 
     if user_name == None:
         login()
