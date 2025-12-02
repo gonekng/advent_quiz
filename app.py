@@ -153,7 +153,7 @@ def show_home():
     year = 2025
     month = 12
 
-    cal = [[0,1,2,3,4,5,6],
+    cal = [[30,1,2,3,4,5,6],
            [7,8,9,10,11,12,13],
            [14,15,16,17,18,19,20],
            [21,22,23,24,25]]
@@ -169,11 +169,12 @@ def show_home():
 
     # 달력 그리기
     cols = st.columns(7)
+    for i in range(7):
+        weekday = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][i]
+        cols[i].markdown(f'<div style="font-size: 18px; font-weight: bold; border-radius: 5px; background-color: seagreen; text-align: center; padding: 5px; color: white;">{weekday}</div>', unsafe_allow_html=True)   
+    st.write('')
     for week in cal:
-        for i in range(7):
-            weekday = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][i]
-            cols[i].markdown(f'<div style="font-size: 18px; font-weight: bold; border-radius: 5px; background-color: seagreen; text-align: center; padding: 5px; color: white;">{weekday}</div>', unsafe_allow_html=True)   
-        st.write('')
+        cols = st.columns(7)
         for i, day in enumerate(week):
             if day == 0:
                 cols[i].write("")  # 빈 칸
@@ -262,7 +263,7 @@ def main():
     st.session_state.answer_list = answer_list
     for idx, val in enumerate(answer_list):
         if val:
-            st.sidebar.write(f'- 12월 {idx+1}일 🍀')
+            st.sidebar.write(f'> 12월 {idx+1}일 : ✅')
     if user_name == None:
         login()
     elif user_name == '관리자':
