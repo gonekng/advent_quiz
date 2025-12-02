@@ -261,7 +261,7 @@ def main():
     
     answer_list = df.loc[df['name'] == user_name].values.flatten().tolist()[2:]
     st.session_state.answer_list = answer_list
-    st.sidebar.write(zip(answer_list.index, answer_list.value))
+    st.sidebar.write(zip(answer_list.index, answer_list))
     if user_name == None:
         login()
     elif user_name == '관리자':
