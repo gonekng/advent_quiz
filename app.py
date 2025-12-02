@@ -262,7 +262,7 @@ def main():
     st.session_state.answer_list = answer_list
     for idx, val in enumerate(answer_list):
         if val:
-            s
+            st.sidebar.write(f'12월 {idx+1}일 🍀')
     if user_name == None:
         login()
     elif user_name == '관리자':
