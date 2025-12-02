@@ -246,8 +246,8 @@ def main():
     df = read_table()
 
     user_name = st.session_state.user_name        
-    st.sidebar.write('## 🎉Merry Christmas!')
-    st.sidebar.space(size="small")
+    st.sidebar.write('# 🎉Merry Christmas!')
+    st.sidebar.space(size=0.5)
     if user_name != None:
         st.sidebar.write(f'### 👋{user_name}님, 안녕하세요')
         if st.sidebar.button('**로그아웃**', use_container_width=True):
@@ -256,7 +256,7 @@ def main():
     if st.sidebar.button('**메인화면**', type = 'primary', use_container_width = True):
         st.session_state.selected_day = None
         st.rerun()
-    st.sidebar.space(size="small")
+    st.sidebar.space(size=0.5)
     answer_list = df.loc[df['name'] == user_name].values.flatten().tolist()[2:]
     st.session_state.answer_list = answer_list
     percentage = sum(answer_list) / 24
