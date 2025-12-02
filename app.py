@@ -247,23 +247,22 @@ def main():
 
     user_name = st.session_state.user_name        
     st.sidebar.title('🎉 Merry Christmas!')
+    st.sidebar.write('---')
     if user_name != None:
-        st.sidebar.write(f'### | {user_name}님, 안녕하세요👋')
+        st.sidebar.write(f'### 👋{user_name}님, 안녕하세요')
         if st.sidebar.button('**로그아웃**', use_container_width=True):
             st.session_state.user_name = None
             st.rerun()
     if st.sidebar.button('**메인화면**', type = 'primary', use_container_width = True):
         st.session_state.selected_day = None
         st.rerun()
-    # if st.sidebar.button('테이블 삭제', use_container_width=True):
-    #     drop_table()
-    #     st.rerun()
     
     answer_list = df.loc[df['name'] == user_name].values.flatten().tolist()[2:]
     st.session_state.answer_list = answer_list
     percentage = sum(answer_list) / 24
     st.sidebar.write('#### 🧮 퀴즈 진행률')
-    st.sidebar.progress(percentage, text=f'> 총 24문제 중 {sum(answer_list)}개 성공')
+    st.sidebar.progress(percentage, text=f'*총 24문제 중 {sum(answer_list)}개 성공*')
+
     if user_name == None:
         login()
     elif user_name == '관리자':
