@@ -246,7 +246,7 @@ def main():
     df = read_table()
 
     user_name = st.session_state.user_name        
-    st.sidebar.title('🎉 Merry Christmas!')
+    st.sidebar.write('## 🎉Merry Christmas!')
     st.sidebar.space(size="small")
     if user_name != None:
         st.sidebar.write(f'### 👋{user_name}님, 안녕하세요')
