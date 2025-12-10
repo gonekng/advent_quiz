@@ -135,6 +135,15 @@ def show_members():
     st.write('---')
 
     user_list = df['name'].tolist()
+    insert_name = st.text_input('Enter new user name')
+    if st.button('추가하기'):
+        if insert_name in user_list:
+            st.error(f'{insert_name}님의 데이터가 이미 존재합니다.')
+        else:
+            insert_table(insert_name)
+            st.success(f'{insert_name}님의 데이터가 추가되었습니다.')
+            st.rerun()
+
     delete_name = st.selectbox("Select a user to delete", user_list)
     if st.button('삭제하기'):
         delete_table(delete_name)
