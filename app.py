@@ -199,7 +199,7 @@ def show_quiz(day):
     description = quizzes2[day]["description"]
     
     col1, col2 = st.columns([8,2])
-    with col1:
+    with col2:
         st.write(f"#### Q. {question}")
         if day == 9:
             st.write('※ 단답형 주관식이며, 이 문제의 정답은 영어로 작성해주세요.')
@@ -213,7 +213,7 @@ def show_quiz(day):
                 update_table(st.session_state.user_name, day)
             else:
                 st.error("땡! 오답입니다. 다시 풀어주세요.")
-    with col2:
+    with col1:
         img_path = f'images/q{day}.jpg'
         try:
             img = Image.open(img_path)
