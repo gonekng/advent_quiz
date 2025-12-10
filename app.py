@@ -198,7 +198,7 @@ def show_quiz(day):
     answer = quizzes2[day]["answer"]
     description = quizzes2[day]["description"]
     
-    col1, col2 = st.columns([8,2])
+    col1, col2 = st.columns([2,8])
     with col2:
         st.write(f"#### Q. {question}")
         if day == 9:
