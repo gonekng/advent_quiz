@@ -5,6 +5,7 @@ from quizzes import quizzes2
 from PIL import Image
 from datetime import datetime
 import pytz
+import time
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -142,17 +143,20 @@ def show_members():
         else:
             insert_table(insert_name)
             st.success(f'{insert_name}님의 데이터가 추가되었습니다.')
+            time.sleep(2)
             st.rerun()
 
     delete_name = st.selectbox("Select a user to delete", user_list)
     if st.button('삭제하기'):
         delete_table(delete_name)
         st.success(f'{delete_name}님의 데이터가 삭제되었습니다.')
+        time.sleep(2)
         st.rerun()
     
     if st.button('테이블 삭제'):
         drop_table()
         st.success('테이블이 삭제되었습니다.')
+        time.sleep(2)
         st.rerun()
 
 def show_home():
